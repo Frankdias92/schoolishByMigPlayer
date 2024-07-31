@@ -1,0 +1,60 @@
+.homeBlock {
+  background-color: #edeaea;
+  width: calc(100vw - 50px);
+  margin: 0 auto;
+  border-radius: 15px;
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 900px;
+
+  transition: box-shadow 0.5s ease-in-out;
+  box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.36);
+  
+  animation: singleFloat 1s ease-in-out;
+}
+
+.homeBlock:hover {
+  box-shadow: 15px 15px 20px 2px rgba(0, 0, 0, 0.36);
+}
+
+.homeBlock .texts {
+  margin-right: 5vw;
+}
+
+.homeBlock .texts h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.homeBlock .texts p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.homeBlock .texts span {
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+
+@media screen and (max-width: 900px) {
+  .homeBlock .image {
+    display: none;
+  }
+
+  .homeBlock .texts {
+    margin-right: none;
+  }
+}
+
+@keyframes singleFloat {
+  0% {
+    transform: translateY(25px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
