@@ -1,24 +1,34 @@
 import { useRef } from "react";
 
 import "../styles/Navbar.css";
+import styled from "styled-components";
+import Colors from "../styles/colors";
 
-function Component() {
+export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
 
   const showNavbar = () => {
-    (navRef.current as unknown as HTMLElement).classList.toggle(
+    (navRef.current as HTMLElement).classList.toggle(
       "responsive_nav"
     );
   };
 
   return (
-    <header>
+    <Header>
       <h3>Schoolish</h3>
       <nav ref={navRef}>
-        <a href="/#">Home</a>
-        <a href="/#">My work</a>
-        <a href="/#">Blog</a>
-        <a href="/#">About me</a>
+        <a href="/#">
+          <span>Home</span>
+        </a>
+        <a href="/#">
+          <span>My work</span>
+        </a>
+        <a href="/#">
+          <span>Blog</span>
+        </a>
+        <a href="/#">
+          <span>About me</span>
+        </a>
         <button className="nav-btn nav-close-btn" onClick={showNavbar}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -40,13 +50,27 @@ function Component() {
           viewBox="0 0 16 16"
         >
           <path
-            fill-rule="evenodd"
+            fillRule="evenodd"
             d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
           />
         </svg>
       </button>
-    </header>
+    </Header>
   );
 }
 
-export default Component;
+const Header = styled.header`
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  width: 100vw;
+  padding: 0 2rem;
+  background-color: ${Colors.mainColor};
+  color: ${Colors.textColor};
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+
+  z-index: 1000;
+`;
