@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { getAuth, connectAuthEmulator } from 'firebase/auth';
 import 'firebase/analytics';
 import { getAnalytics } from 'firebase/analytics';
 
@@ -14,10 +14,18 @@ const firebaseConfig = {
     measurementId: "G-N0JH48SBJX"
 };
 
-export const app = initializeApp(firebaseConfig);
-export const analytics = getAnalytics(app);
-export const auth = getAuth(app);
-
-export const hooks = {
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth(app);
+const hooks = {
     getUserData: () => auth.currentUser || null
 }
+
+connectAuthEmulator(auth, "http://127.0.0.1:9099");
+
+export { 
+    app, 
+    auth,
+    analytics,
+    hooks
+};
