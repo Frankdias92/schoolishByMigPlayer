@@ -7,6 +7,8 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 
+import './styles/firebaseEmulatorWarning.css';
+
 const router = createBrowserRouter([
   {
     path: "/",
