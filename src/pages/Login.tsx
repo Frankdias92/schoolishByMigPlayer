@@ -41,6 +41,10 @@ function Page() {
                     .catch((error) => {
                         if (error.message.includes("auth/invalid-credential")) {
                             alert("Credenciais inválidas!")
+                        } else if (error.message.includes("auth/user-not-found")) {
+                            alert("Usuário não encontrado!")
+                        } else {
+                            alert(error.message)
                         }
                     })
             })

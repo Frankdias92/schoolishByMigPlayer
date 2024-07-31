@@ -6,8 +6,10 @@ import {
   UserCredential,
 } from "firebase/auth";
 import { Navigate } from "react-router-dom";
-import { auth } from "../services/firebase";
 import styled from "styled-components";
+
+import { auth } from "../services/firebase";
+import setAlertMessage from "../utils/setAlertMessage";
 import colors from "../styles/colors";
 
 function Page() {
@@ -33,31 +35,14 @@ function Page() {
     return () => unsubscribe();
   }, []);
 
-  function setAlertMessage(data: { type: string; message: string }) {
-    alertMessageBox.current!.style.display = "block";
-    alertMessageBox.current!.innerHTML = `<p>${data.message}</p><button
-            type="button"
-            className="btn-close"
-            data-bs-dismiss="alert"
-            aria-label="Close"
-          ></button>`;
-    alertMessageBox.current!.classList.toggle(
-      data.type === "error"
-        ? "alert-danger"
-        : data.type === "warning"
-        ? "alert-warning"
-        : data.type === "info"
-        ? "alert-info"
-        : "alert-success"
-    );
-  }
+  
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-  alert("oi")
+    e.preventDefault();1
 
     if (!email || !password) {
       setAlertMessage({
+        ref: alertMessageBox.current,
         type: "info",
         message: "Preencha todos os campos!",
       });
@@ -72,12 +57,14 @@ function Page() {
       .catch((error) => {
         if (error.message.includes("auth/email-already-in-use")) {
           setAlertMessage({
+            ref: alertMessageBox,
             type: "warning",
             message:
               "Esse endereço de e-mail já está em uso. Tente outro. <strong>Se você já tem uma conta conosco</strong>, tente <a href='/login'>fazer login</a>.",
           });
         } else if (error.message.includes("auth/network-request-failed")) {
           setAlertMessage({
+            ref: alertMessageBox,
             type: "error",
             message:
               "Você está sem conexão com a internet. Tente novamente mais tarde ou atualize a página.",
@@ -99,19 +86,7 @@ function Page() {
           </strong>
         </h1>
 
-        <div
-          className="alert alert-warning alert-dismissible fade show"
-          role="alert"
-          ref={alertMessageBox}
-          style={{ display: "none" }}
-        >
-          <button
-            type="button"
-            className="btn-close"
-            data-bs-dismiss="alert"
-            aria-label="Close"
-          ></button>
-        </div>
+        <div className="message" ref={alertMessageBox}></div>
 
         <form onSubmit={onSubmit}>
           <input
