@@ -1,4 +1,3 @@
-import React from 'react';
 import { hooks } from '../services/firebase';
 import { Navigate } from 'react-router-dom';
 
