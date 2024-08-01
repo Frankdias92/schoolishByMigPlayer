@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, connectAuthEmulator } from "firebase/auth";
-import "firebase/analytics";
 import { getAnalytics } from "firebase/analytics";
 
 // Configurações do Firebase
