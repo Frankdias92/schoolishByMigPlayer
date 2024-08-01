@@ -3,12 +3,15 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://migplayer6032.github.io/schoolish",
   "scripts": {
-    "run:dev": "cls && vite",
-    "run:build": "tsc -b && vite build",
-    "run:lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "run:preview": "vite preview",
-    "run:emulators": "cls && firebase emulators:start"
+    "dev": "cls && vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "emulators": "cls && firebase emulators:start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "firebase": "^10.12.3",
@@ -28,6 +31,7 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
+    "gh-pages": "^6.1.1",
     "typescript": "^5.2.2",
     "vite": "^5.3.1",
     "vite-plugin-babel": "^1.2.0"
