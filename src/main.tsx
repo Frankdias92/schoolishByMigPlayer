@@ -1,6 +1,6 @@
-import React from "react";
+import "react";
 import * as ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter, createBrowserRouter, RouterProvider } from "react-router-dom";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import Home from "./pages/Home";
@@ -32,9 +32,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(
   document.getElementById("root") ?? document.createElement("div")
 ).render(
-  <React.StrictMode>
+  <BrowserRouter>
     <SpeedInsights />
 
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </BrowserRouter>
 );
