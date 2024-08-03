@@ -8,7 +8,7 @@ import {
 import { Navigate } from "react-router-dom";
 import styled from "styled-components";
 
-import { auth } from "../services/firebase";
+import { auth, errors } from "../services/firebase";
 import setAlertMessage from "../utils/setAlertMessage";
 import colors from "../styles/colors";
 
@@ -35,14 +35,14 @@ function Page() {
     return () => unsubscribe();
   }, []);
 
-  
-
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();1
+    e.preventDefault();
+
+    alert("Cadastrando...");
 
     if (!email || !password) {
       setAlertMessage({
-        ref: alertMessageBox.current,
+        ref: alertMessageBox,
         type: "info",
         message: "Preencha todos os campos!",
       });
@@ -55,23 +55,13 @@ function Page() {
         console.log(user);
       })
       .catch((error) => {
-        if (error.message.includes("auth/email-already-in-use")) {
-          setAlertMessage({
-            ref: alertMessageBox,
-            type: "warning",
-            message:
-              "Esse endereço de e-mail já está em uso. Tente outro. <strong>Se você já tem uma conta conosco</strong>, tente <a href='/login'>fazer login</a>.",
-          });
-        } else if (error.message.includes("auth/network-request-failed")) {
-          setAlertMessage({
-            ref: alertMessageBox,
-            type: "error",
-            message:
-              "Você está sem conexão com a internet. Tente novamente mais tarde ou atualize a página.",
-          });
-        } else {
-          alert(error.message);
-        }
+        const errorCode = String(error.message).replace("Firebase: Error (", "").replace(").", "")
+        const errorMessage = (errors.auth[errorCode as keyof typeof errors.auth]) || "Erro desconhecido. Tente novamente mais tarde ou <a href=''>atualize a página</a>."
+        setAlertMessage({
+          ref: alertMessageBox,
+          type: "warning",
+          message: errorMessage,
+        });
       });
   }
 
