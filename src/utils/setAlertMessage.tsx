@@ -1,19 +1,22 @@
-export default function setAlertMessage(data: { ref: unknown, type: string; message: string }) {
-    const alertMessageBox = document.createElement("div")
-    alertMessageBox.style.display = "block";
-    alertMessageBox.innerHTML = `<p>${data.message}</p><button
-            type="button"
-            className="btn-close"
-            data-bs-dismiss="alert"
-            aria-label="Close"
-          ></button>`;
-    alertMessageBox.classList.toggle(
-      data.type === "error"
-        ? "alert-danger"
-        : data.type === "warning"
-        ? "alert-warning"
-        : data.type === "info"
-        ? "alert-info"
-        : "alert-success"
-    );
-  }
+export default function setAlertMessage(data: {
+  ref: React.RefObject<HTMLElement>;
+  type: string;
+  message: string;
+}) {
+  const alertMessageBox = data.ref.current as HTMLElement;
+
+  alertMessageBox.innerHTML = `
+      <div class="${
+        data.type === "error"
+          ? "alert-danger"
+          : data.type === "warning"
+          ? "alert-warning"
+          : data.type === "info"
+          ? "alert-info"
+          : "alert-success"
+      } alert d-flex align-items-center fade show" role="alert">
+      ${data.message}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    `;
+}
