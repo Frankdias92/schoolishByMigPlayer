@@ -1,58 +1,76 @@
+import { useEffect, useMemo } from "react";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import Cookies from "universal-cookie";
 
 import colors from "../styles/colors";
+import { languages } from "../services/i18n";
 
 export default function Footer() {
+  const cookies = useMemo(() => new Cookies(), []);
+  const { i18n, t } = useTranslation();
+
+  useEffect(() => {
+    if (
+      cookies.get("schoolish-language") &&
+      languages
+        .map(({ code }) => code)
+        .includes(cookies.get("schoolish-language"))
+    ) {
+      i18n.changeLanguage(cookies.get("schoolish-language"));
+    } else {
+      cookies.set("schoolish-language", i18n.language);
+    }
+  }, [cookies, i18n]);
+
   return (
     <>
       <Footer_Component>
         <div className="columns">
           <div className="column">
-            <h1>Quem somos?</h1>
+            <h1>{t("Who we are?")}</h1>
             <div>
-              <a href="/sobre">Sobre o Schoolish</a>
+              <a href="/about">{t("About Schoolish")}</a>
               <div className="underline-decoration"></div>
             </div>
             <div>
-              <a href="/sobre#visao">Visão</a>
+              <a href="/about#vision">{t("Vision")}</a>
               <div className="underline-decoration"></div>
             </div>
             <div>
-              <a href="/sobre#social_media">Redes Sociais</a>
+              <a href="/about#social_media">{t("Social Media")}</a>
               <div className="underline-decoration"></div>
             </div>
             <div>
-              <a href="/sobre#branding">Branding</a>
+              <a href="/about#branding">{t("Branding")}</a>
               <div className="underline-decoration"></div>
             </div>
           </div>
           <div className="column">
-            <h1>Páginas Importantes</h1>
-            <a href="/schoolish-for/teachers">Schoolish para Professores</a>
-            <a href="/schoolish-for/students">Schoolish para Alunos</a>
-            <a href="/why_schoolish">Por que Schoolish?</a>
+            <h1>{t("Important Pages")}</h1>
+            <a href="/schoolish-for/teachers">{t("Schoolish for Teachers")}</a>
+            <a href="/schoolish-for/students">{t("Schoolish for Students")}</a>
+            <a href="/why_schoolish">{t("Why Schoolish?")}</a>
           </div>
           <div className="column">
-            <h1>Políticas</h1>
-            <a href="/policies/cookies">Política de Cookies</a>
-            <a href="/policies/terms-of-use">Termos de Uso do Schoolish</a>
+            <h1>{t("Policies")}</h1>
+            <a href="/policies/cookies">{t("Cookie Policy")}</a>
+            <a href="/policies/terms-of-use">{t("Schoolish Terms of Use")}</a>
             <a href="/policies/privacy-policy">
-              Política de Privacidade do Schoolish
+              {t("Schoolish Privacy Policy")}
             </a>
             <a href="/policies/partners-privacy-policy">
-              Política de Privacidade de Parceiros
+              {t("Partner Privacy Policy")}
             </a>
-            <a href="/policies/dont-sell-my-data">DSMD!</a>
-            <a href=""></a>
+            <a href="/policies/dont-sell-my-data">{t("DSMD")}</a>
           </div>
           <div className="column">
-            <h1>Contato</h1>
-            <a href="/contact#whatsapp">WhatsApp</a>
-            <a href="/contact#email">E-mail</a>
-            <a href="/contact#location">Localização</a>
-            <a href="/contact#online-chat">Chat online</a>
-            <a href="/contact#form">Formulário de contato</a>
-            <a href=""></a>
+            <h1>{t("Contact")}</h1>
+            <a href="/contact#whatsapp">{t("WhatsApp")}</a>
+            <a href="/contact#email">{t("Email")}</a>
+            <a href="/contact#location">{t("Location")}</a>
+            <a href="/contact#online-chat">{t("Online chat")}</a>
+            <a href="/contact#form">{t("Contact form")}</a>
           </div>
         </div>
       </Footer_Component>
@@ -63,11 +81,30 @@ export default function Footer() {
           color: "white",
           textAlign: "center",
           width: "100vw",
-          padding: "15px"
+          padding: "15px",
         }}
       >
-        <select className="country">🇧🇷 Brasil</select>
-        <select className="language">Português (Brasil)</select>
+        <select
+          defaultValue={
+            cookies.get("schoolish-language") &&
+            languages
+              .map(({ code }) => code)
+              .includes(cookies.get("schoolish-language"))
+              ? cookies.get("schoolish-language")
+              : i18n.language
+          }
+          onChange={(e) => {
+            i18n.changeLanguage(e.target.value);
+            cookies.set("schoolish-language", e.target.value);
+            // window.location.reload();
+          }}
+        >
+          {languages.map(({ code, label }) => (
+            <option key={code} value={code}>
+              {label}
+            </option>
+          ))}
+        </select>
       </div>
     </>
   );
