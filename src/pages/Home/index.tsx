@@ -2,18 +2,19 @@ import styled from "styled-components";
 import { ReactTyped } from "react-typed";
 import { useTranslation } from "react-i18next";
 
-import { Footer } from "../../components/Footer.tsx";
+import { Navbar } from "../../components/Navbar.tsx";
+import { HomeBlock } from "../../components/HomeBlock/HomeBlock.tsx";
+import { Footer } from "../../components/Footer/Footer.tsx";
+import { Space } from "../../components/Space.tsx";
 
 import Colors from "../../styles/colors.tsx";
-import { Navbar } from "../../components/Navbar.tsx";
-import { Space } from "../../components/Space.tsx";
-import { HomeBlock } from "../../components/HomeBlock.tsx";
+
 
 function Home() {
   const { t } = useTranslation();
 
   return (
-    <>
+    <div>
       <Navbar />
       <Space height="80px" />
       <Overview>
@@ -242,7 +243,7 @@ function Home() {
         <Space height="50px" />
       </section>
       <Footer />
-    </>
+    </div>
   );
 }
 

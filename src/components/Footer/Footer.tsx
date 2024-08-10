@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import Cookies from "universal-cookie";
 
-import colors from "../styles/colors";
-import { languages } from "../services/i18n";
+import colors from "../../styles/colors";
+import { languages } from "../../services/i18n";
 
 export function Footer() {
   const cookies = useMemo(() => new Cookies(), []);

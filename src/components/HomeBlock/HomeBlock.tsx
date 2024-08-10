@@ -1,6 +1,6 @@
 
-import "../styles/HomeBlock.css";
-import { Space } from "./Space";
+import { Space } from "../Space";
+import './index.css'
 
 interface TextProps {
   text: string

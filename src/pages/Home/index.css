@@ -1,0 +1,10 @@
+.arrow {
+  height: 12px;
+  width: 12px;
+  border-bottom: 4px solid;
+  border-right: 4px solid;
+  border-bottom-right-radius: 20%;
+}
+.arrow-right {
+  rotate: -45deg;
+}

@@ -22,7 +22,7 @@ header .nav-btn {
   font-size: 1.8rem;
 }
 
-header div,
+header,
 nav {
   display: flex;
   align-items: center;

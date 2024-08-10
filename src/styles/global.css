@@ -12,25 +12,15 @@
   --secondaryColor: #c99de3;
   --textColor: #eee;
 }
-.arrow {
-  height: 12px;
-  width: 12px;
-  border-bottom: 4px solid;
-  border-right: 4px solid;
-  border-bottom-right-radius: 20%;
-}
-.arrow-right {
-  rotate: -45deg;
-}
-#alertMessageBox {
-  padding: 15px;
+
+body {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  flex-direction: column;
+  width: auto;
+  height: auto;
 }
+
+/* MAIN ######### */
 /* Loader */
 .loading {
   width: 100vw;
