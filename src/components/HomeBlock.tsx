@@ -1,8 +1,8 @@
-import Space from "./Space";
 
 import "../styles/HomeBlock.css";
+import { Space } from "./Space";
 
-export default function HomeBlock({
+export function HomeBlock({
   title,
   subtitle,
   text,

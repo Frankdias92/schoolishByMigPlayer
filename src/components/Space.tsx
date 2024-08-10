@@ -1,4 +1,4 @@
-export default function Space({ height }: { height: string | '1px' }) {
+export function Space({ height }: { height: string | '1px' }) {
   return (
     <div className="separator" style={{
       height,

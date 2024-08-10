@@ -4,7 +4,7 @@ import "../styles/Navbar.css";
 import styled from "styled-components";
 import Colors from "../styles/colors";
 
-export default function Navbar() {
+export function Navbar() {
   const navRef = useRef<HTMLElement>(null);
 
   const showNavbar = () => {
