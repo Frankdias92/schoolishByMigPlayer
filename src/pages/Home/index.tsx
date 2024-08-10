@@ -2,12 +2,12 @@ import styled from "styled-components";
 import { ReactTyped } from "react-typed";
 import { useTranslation } from "react-i18next";
 
-import Navbar from "../../components/Navbar.tsx";
-import Space from "../../components/Space.tsx";
-import HomeBlock from "../../components/HomeBlock.tsx";
 import { Footer } from "../../components/Footer.tsx";
 
 import Colors from "../../styles/colors.tsx";
+import { Navbar } from "../../components/Navbar.tsx";
+import { Space } from "../../components/Space.tsx";
+import { HomeBlock } from "../../components/HomeBlock.tsx";
 
 function Home() {
   const { t } = useTranslation();
