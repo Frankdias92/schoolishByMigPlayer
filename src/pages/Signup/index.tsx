@@ -10,11 +10,11 @@ import {
 import { Navigate } from "react-router-dom";
 import styled from "styled-components";
 
-import { auth, errors } from "../services/firebase";
-import setAlertMessage from "../utils/setAlertMessage";
-import colors from "../styles/colors";
+import { auth, errors } from "../../services/firebase";
+import setAlertMessage from "../../utils/setAlertMessage";
+import colors from "../../styles/colors";
 
-function Page() {
+function SingUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLogged, setIsLogged] = useState(false);
@@ -133,7 +133,7 @@ function Page() {
   );
 }
 
-export default Page;
+export default SingUp;
 
 const Login = styled.main`
   display: flex;

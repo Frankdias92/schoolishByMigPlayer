@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { ReactTyped } from "react-typed";
 import { useTranslation } from "react-i18next";
 
-import Navbar from "../components/Navbar";
-import Space from "../components/Space";
-import HomeBlock from "../components/HomeBlock";
-import Footer from "../components/Footer";
+import Navbar from "../../components/Navbar.tsx";
+import Space from "../../components/Space.tsx";
+import HomeBlock from "../../components/HomeBlock.tsx";
+import { Footer } from "../../components/Footer.tsx";
 
-import Colors from "../styles/colors.tsx";
+import Colors from "../../styles/colors.tsx";
 
-function Page() {
+function Home() {
   const { t } = useTranslation();
 
   return (
@@ -254,4 +254,4 @@ const Overview = styled.main`
   margin: 0 auto;
 `;
 
-export default Page;
+export default Home;

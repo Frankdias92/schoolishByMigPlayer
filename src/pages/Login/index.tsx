@@ -8,11 +8,11 @@ import {
 import { Navigate } from "react-router-dom";
 import styled from "styled-components";
 
-import { auth, errors } from "../services/firebase";
-import colors from "../styles/colors";
-import setAlertMessage from "../utils/setAlertMessage";
+import { auth, errors } from "../../services/firebase";
+import colors from "../../styles/colors";
+import setAlertMessage from "../../utils/setAlertMessage";
 
-function Page() {
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLogged, setIsLogged] = useState(false);
@@ -65,7 +65,7 @@ function Page() {
   }
 
   return (
-    <Login>
+    <LoginSection>
       {isLogged && <Navigate to="/dashboard" replace={true} />}
       <div className="form-structor">
         <form className="signup" onSubmit={onLogin}>
@@ -105,13 +105,13 @@ function Page() {
           </div>
         </div>
       </div>
-    </Login>
+    </LoginSection>
   );
 }
 
-export default Page;
+export default Login;
 
-const Login = styled.main`
+const LoginSection = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;

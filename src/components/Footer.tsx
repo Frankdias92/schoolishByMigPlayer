@@ -6,7 +6,7 @@ import Cookies from "universal-cookie";
 import colors from "../styles/colors";
 import { languages } from "../services/i18n";
 
-export default function Footer() {
+export function Footer() {
   const cookies = useMemo(() => new Cookies(), []);
   const { i18n, t } = useTranslation();
 
