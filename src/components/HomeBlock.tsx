@@ -2,32 +2,26 @@
 import "../styles/HomeBlock.css";
 import { Space } from "./Space";
 
-export function HomeBlock({
-  title,
-  subtitle,
-  text,
-  image,
-}: {
-  title: {
-    text: string;
-    color: string;
-    weight: string;
-  };
-  subtitle: {
-    text: string;
-    color: string | undefined;
-    weight: string;
-  };
-  text: {
-    text: string;
-    color: string | undefined;
-    weight: string;
-  };
-  image: {
-    imageURL: string | undefined;
-    imageAlt: string | undefined;
-  };
-}) {
+interface TextProps {
+  text: string
+  color: string
+  weight: string
+}
+
+interface ImageProps {
+  imageURL: string
+  imageAlt: string
+}
+
+type HomeBlockProps = {
+  title: TextProps
+  subtitle: TextProps
+  text: TextProps
+  image: ImageProps
+}
+
+
+export function HomeBlock({ title, subtitle, text, image }: HomeBlockProps) {
   return (
     <div className="homeBlock">
       <div className="texts">
